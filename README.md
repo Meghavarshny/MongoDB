@@ -1,4 +1,84 @@
 # MongoDB
+1. users Collection:
+   {
+  _id: ObjectId("65e23a8b1234567890abcdef"), 
+  name: "John Doe",
+  email: "john.doe@example.com",
+  password: "hashedpassword123", 
+  batch: "FSD-MERN-Stack-Oct2023",
+  mentor_id: ObjectId("65e23a8b1234567890abcdef"), 
+  created_at: ISODate("2023-09-01T10:00:00Z"),
+  // Embedded attendance and codekata for quick access, or keep separate if very large
+  attendance: [
+    { date: ISODate("2023-10-01T09:00:00Z"), present: true },
+    { date: ISODate("2023-10-02T09:00:00Z"), present: false },
+    // ... more attendance records
+   
+  ],
+  codekata_problems: [
+    { problem_name: "Array Sum", solved_at: ISODate("2023-10-05T14:30:00Z") },
+    { problem_name: "String Reverse", solved_at: ISODate("2023-10-06T11:00:00Z") },
+    // ... more solved problems
+    
+  ],
+  tasks_submitted: [
+    {
+      task_id: ObjectId("65e23a8b1234567890fdecba"), // Reference to task
+      submission_date: ISODate("2023-10-10T17:00:00Z"),
+      is_submitted: true
+    },
+    {
+      task_id: ObjectId("65e23a8b1234567890fedcba"), // Reference to task
+      submission_date: null,
+      is_submitted: false
+    }
+    
+  ]
+}
+
+2. mentors Collection:
+
+   {
+  _id: ObjectId("65e23a8b1234567890abcdef"),
+  name: "Jane Smith",
+  email: "jane.smith@example.com",
+  
+}
+
+3.topics Collection:
+
+{
+  _id: ObjectId("65e23a8b1234567890fdecba"),
+  name: "Introduction to HTML",
+  date_taught: ISODate("2023-10-01T10:00:00Z"),
+  tasks: [
+  
+    {
+      task_name: "Build a static webpage",
+      due_date: ISODate("2023-10-05T23:59:59Z")
+    },
+    {
+      task_name: "HTML forms exercise",
+      due_date: ISODate("2023-10-07T23:59:59Z")
+    }
+  ]
+}
+
+4.company_drives Collection:
+
+{
+  _id: ObjectId("65e23a8b1234567890abcde1"),
+  company_name: "Google",
+  drive_date: ISODate("2020-10-20T10:00:00Z"),
+  package_offered: 15.5, 
+  students_appeared: [
+    { user_id: ObjectId("65e23a8b1234567890abcdef"), got_placement: true },
+    { user_id: ObjectId("65e23a8b1234567890abcdef"), got_placement: false }
+
+  ]
+}
+
+queries:
 
 1. Find all the topics and tasks which are thought in the month of October.
    
